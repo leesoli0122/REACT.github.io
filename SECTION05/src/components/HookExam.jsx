@@ -1,5 +1,13 @@
+import { useState } from "react";
+import useInput from "./../hooks/useInput";
+
 const HookExam = () => {
-    return <div>hookexam</div>;
+    const [input, onChange] = useInput();
+    return (
+        <div>
+            <input value={input} onChange={onChange}/>
+        </div>
+    );
 };
 
 export default HookExam;
