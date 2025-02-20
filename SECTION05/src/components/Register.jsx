@@ -9,20 +9,32 @@ const Register = () => {
     });
 
     const countRef = useRef(0);
+    const inputRef = useRef();
+
+    let count = 0;
 
     const onChange = (e) => {
-        countRef.current++;
-        console.log(countRef.current);
+        // countRef.current++;
+        count ++;
+        // console.log(countRef.current);
+        console.log(count); //1로 고정
         setInput({
             ...input,
             [e.target.name]:e.target.value
         })
     };
 
+    const onSubmit = () => {
+        if(input.name === ""){
+            //이름을 입력하는 DOM 요소 포커스
+            inputRef.current.focus();
+        }
+    }
+
     return (
         <div>
             <div>
-                <input name="name" value={input.name} onChange={onChange} placeholder={"이름"} />
+                <input ref={inputRef} name="name" value={input.name} onChange={onChange} placeholder={"이름"} />
             </div>
 
             <div>
@@ -36,13 +48,12 @@ const Register = () => {
                     <option value="us">미국</option>
                     <option value="uk">영국</option>
                 </select>
-                {input.country}
             </div>
 
             <div>
                 <textarea name="bio" value={input.bio} onChange={onChange}/>
             </div>
-            {input.bio}
+            <button onClick={onSubmit}>제출</button>
         </div>
     );
 }
