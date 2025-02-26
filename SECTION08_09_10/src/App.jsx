@@ -18,7 +18,7 @@ const mockData = [
     date: new Date().getTime(),
   },
   {
-    id:3,
+    id:2,
     isDone: false,
     content: "노래하기",
     date: new Date().getTime(),
@@ -42,7 +42,7 @@ function App() {
     dispatch({
       type : 'CREATE',
       data : {
-        id : idRef.current ++,
+        id : idRef.current++,
         isDone : false,
         content : content,
         date : new Date().getTime(),

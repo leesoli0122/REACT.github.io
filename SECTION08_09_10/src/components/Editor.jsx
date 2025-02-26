@@ -3,7 +3,7 @@ import { useState, useRef } from 'react';
 
 const Editor = ({onCreate}) => {
     const [content, setContent] = useState("");
-    const contentRef = useRef();
+    const inputRef = useRef();
 
     //사용자가 입력한 내용을 content 상태에 반영
     const onChangeContent = (e) => {
@@ -19,7 +19,7 @@ const Editor = ({onCreate}) => {
 
     const onSubmit = () => {
         if(content === ""){
-            contentRef.current.focus();//<input> 요소에 포커스를 줌
+            inputRef.current.focus();//<input> 요소에 포커스를 줌
             return;
         }
         onCreate(content);//입력값이 있으면 호출해 Todo를 추가
@@ -27,7 +27,7 @@ const Editor = ({onCreate}) => {
     }
     return (
         <div className="Editor">
-            <input ref={contentRef} value={content} onKeyDown={onKeydown} onChange={onChangeContent} placeholder="새로운 Todo..." />
+            <input ref={inputRef} value={content} onKeyDown={onKeydown} onChange={onChangeContent} placeholder="새로운 Todo..." />
             <button onClick={onSubmit}>추가</button>
         </div>
     );
